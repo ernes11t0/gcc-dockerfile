@@ -1,4 +1,4 @@
-FROM default-route-openshift-image-registry.apps.ocp.lab.com/du/du:mvrp-du-x86-5.0.326.54
+FROM image-registry.openshift-image-registry.svc:5000/du/du:mvrp-du-x86-5.0.326.54
 COPY . /usr/src/myapp
 WORKDIR /usr/src/myapp
 RUN apt-get update -y
