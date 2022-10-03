@@ -1,7 +1,8 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.0
 MAINTAINER Red Hat Training <training@redhat.com>
 # Install the Java runtime, create a user for running the app, and set permissions
-RUN yum -y install perf
+RUN yum -y update
+RUN yum -y --disableplugin=subscription-manager install perf
 RUN mkdir -p /opt/app-root/bin
 COPY . /opt/app-root/bin/
 RUN chgrp -R 0 /opt/app-root && \
