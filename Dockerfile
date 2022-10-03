@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.0
 MAINTAINER Red Hat Training <training@redhat.com>
 # Install the Java runtime, create a user for running the app, and set permissions
-RUN yum -y search perf
+RUN yum-config-manager --enable rhel-8-for-x86_64-baseos-rpms
 #RUN yum -y update
 #RUN yum install perf -y
 RUN mkdir -p /opt/app-root/bin
