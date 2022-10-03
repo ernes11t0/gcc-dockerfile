@@ -1,9 +1,14 @@
-FROM ubuntu:latest
-COPY . /usr/src/myapp
-WORKDIR /usr/src/myapp
-RUN apt-get update -y
-RUN apt-get -y install gcc
-RUN apt-get -y install linux-tools-generic
-RUN apt-get -y install linux-tools-4.18.0-305.40.2.el8_4.x86_64
+FROM registry.access.redhat.com/ubi8/ubi:8.0
+MAINTAINER Red Hat Training <training@redhat.com>
+# Install the Java runtime, create a user for running the app, and set permissions
+RUN yum install -y --disableplugin=subscription-manager gcc && yum install perf gawk && \
+yum clean all --disableplugin=subscription-manager -y && \
+mkdir -p /opt/app-root/bin
+COPY . /opt/app-root/bin/
+RUN chgrp -R 0 /opt/app-root && \
+chmod -R g=u /opt/app-root
+EXPOSE 8080
+USER 1001
+# Run the fat JAR
 RUN gcc -o strcpy strcpy.c
-RUN perf record ./strcpy
+RUN perf record ./ strcpy
