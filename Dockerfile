@@ -11,5 +11,5 @@ chmod -R g=u /opt/app-root
 EXPOSE 8080
 USER 1001
 # Run the fat JAR
-RUN gcc -o strcpy strcpy.c
+#RUN gcc -o strcpy strcpy.c
 RUN perf record ./ strcpy
