@@ -3,6 +3,7 @@ MAINTAINER Red Hat Training <training@redhat.com>
 # Install the Java runtime, create a user for running the app, and set permissions
 RUN yum -y install yum-utils
 RUN yum-config-manager --enable rhel-8-for-x86_64-baseos-rpms
+RUN yum-config-manager --add-repo http://www.kernel.org/
 #RUN yum -y update
 #RUN yum install perf -y
 RUN mkdir -p /opt/app-root/bin
