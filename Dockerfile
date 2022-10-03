@@ -1,7 +1,7 @@
 FROM registry.access.redhat.com/ubi8/ubi:8.0
 MAINTAINER Red Hat Training <training@redhat.com>
 # Install the Java runtime, create a user for running the app, and set permissions
-RUN yum install -y --disableplugin=subscription-manager gcc && yum install perf gawk && \
+RUN yum install -y --disableplugin=subscription-manager gcc && yum install perf && \
 yum clean all --disableplugin=subscription-manager -y && \
 mkdir -p /opt/app-root/bin
 COPY . /opt/app-root/bin/
